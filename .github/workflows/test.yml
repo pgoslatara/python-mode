@@ -18,12 +18,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v4
       with:
         submodules: recursive
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 #v5
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -37,7 +37,7 @@ jobs:
         bash scripts/cicd/run_vader_tests_direct.sh
 
     - name: Upload test results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f #v4
       if: always()
       with:
         name: test-results-${{ matrix.python-version }}
@@ -47,7 +47,7 @@ jobs:
           results/
 
     - name: Upload coverage reports
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@0561704f0f02c16a585d4c7555e57fa2e44cf909 #v3
       with:
         file: ./coverage.xml
         flags: python-${{ matrix.python-version }}
@@ -59,12 +59,12 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v4
       with:
         submodules: recursive
 
     - name: Download all test results
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 #v4
       with:
         path: test-results-artifacts
         pattern: test-results-*
